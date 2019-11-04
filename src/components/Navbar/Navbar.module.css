@@ -1,0 +1,28 @@
+.nav{
+	grid-area: n;
+	background: linear-gradient(to right, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+}
+
+.item{
+	color: floralwhite;
+}
+
+.link{
+	text-decoration: none;
+	color: #fff;
+	padding: 5px;
+	font-size: 22px;
+	display: block;
+	width: 200px;
+	text-align: left;
+}
+
+.link:hover{
+	color: #000;
+	background: rgb(235, 235, 238);	
+}
+
+.active{
+	color: #000;
+	background: rgb(235, 235, 238);	
+}

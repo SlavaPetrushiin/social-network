@@ -14,21 +14,7 @@
 		"n c";
 }
 
-.header{
-	grid-area: h;
-	background-color: coral;
-}
 
-.header img{
-	width: 30px;
-}
 
-.nav{
-	grid-area: n;
-	background-color: darkgrey;
-}
 
-.main{
-	grid-area: c;
-	background-color: darkorange;
-}
+
