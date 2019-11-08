@@ -1,8 +1,25 @@
 .header{
 	grid-area: h;
-	background-color: coral;
+	background-color:#231F20;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;;
 }
 
-.header img{
-	width: 30px;
+.formGroup{
+
 }
+
+.search{
+	background: rgba(255,255,255, 0.2);
+	border: 0;
+	box-shadow: none;
+	min-width: 235px;
+	color: #fff;
+	height: 26px;
+	border-radius: 13px;
+	font-size: 13px;
+	padding-left: 10px;	
+}
+

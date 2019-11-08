@@ -4,7 +4,12 @@ import classes from './Header.module.css';
 const Header = () => {
 	return (
 		<header className={classes.header}>
-			<img src="https://www.clipartmax.com/png/full/270-2703019_pictures-gallery-of-company-logos-design-free-logo-design-3d-png.png" />
+			<div className={classes.headerLogo}>
+				<img src="http://mythemestore.com/friend-finder/images/logo.png" />
+			</div>
+			<div className={classes.formGroup}>
+				<input type="text" placeholder="Search friends, photos, videos" className={classes.search} />
+			</div>
 		</header>
 	)
 }

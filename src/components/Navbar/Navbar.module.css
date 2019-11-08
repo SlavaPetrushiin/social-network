@@ -22,7 +22,7 @@
 	background: rgb(235, 235, 238);	
 }
 
-.active{
+.link .activeLink{
 	color: #000;
 	background: rgb(235, 235, 238);	
 }
