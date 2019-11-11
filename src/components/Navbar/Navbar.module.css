@@ -1,6 +1,7 @@
 .nav{
 	grid-area: n;
 	background: linear-gradient(to right, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+	min-height: 100vh;
 }
 
 .item{
@@ -10,11 +11,12 @@
 .link{
 	text-decoration: none;
 	color: #fff;
-	padding: 5px;
 	font-size: 22px;
 	display: block;
 	width: 200px;
 	text-align: left;
+	margin: 10px 0;
+	padding: 0 10px;
 }
 
 .link:hover{

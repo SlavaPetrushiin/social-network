@@ -4,6 +4,10 @@
 	padding: 10px;
 }
 
+.dialogsItems{
+	margin-left: 10px;
+}
+
 .dialogsItems .active{
 	color: rgb(155, 180, 66);
 	font-weight: 800;
@@ -12,4 +16,9 @@
 .dialog {
 	text-decoration: none;
 	color: black;
+}
+
+.messages{
+	padding: 0 20px 0 20px;
+	border-left: 2px solid black;
 }

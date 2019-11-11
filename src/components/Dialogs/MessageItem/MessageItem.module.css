@@ -1,0 +1,41 @@
+.messagesBlock{
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.userAvatar{
+	position: relative;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-color: crimson;
+}
+
+.userAvatar::before{
+	position: absolute;
+	content: '';
+	width: 50px;
+	height: 50px;
+	border: 7px solid white;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+}
+
+.userMessage{
+	width: 100%;
+	border-radius: 10px;;
+	margin-left: 15px;
+	background-color: darkgrey;
+	padding: 7px;
+	color: #ffffff;
+}
+
+.friend{
+	margin-right: 15px;
+	order: -1;
+}

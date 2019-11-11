@@ -1,0 +1,16 @@
+.friend{
+	width: 30%;
+}
+
+.friendImg{
+
+}
+
+.friendImg img{
+	display: inline-block;
+	width: 100%;
+}
+
+.friendName{
+	text-align: center;
+}
