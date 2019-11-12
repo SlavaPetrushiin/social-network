@@ -2,6 +2,7 @@
 	display: grid;
 	grid-template-columns: 2fr 10fr;
 	padding: 10px;
+	min-height: 100%;
 }
 
 .dialogsItems{
@@ -21,4 +22,34 @@
 .messages{
 	padding: 0 20px 0 20px;
 	border-left: 2px solid black;
+	position: relative;
+}
+
+.messagesAdd{
+	position: absolute;
+	bottom: 5px;
+	left: 13px;
+	right: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.userMessage{
+	width: 80%;
+	min-width: 235px;
+	background: rgba(255, 255, 255, 0.918);
+	border: 0;
+	box-shadow: none;
+	border-radius: 13px;
+	padding: 10px 10px;
+}
+
+.addMessage{
+	padding: 8px 15px;
+	border: none;
+	border-radius: 8px;
+	color: #fff;
+	text-transform: uppercase;
+	background-color: darkgray;
 }

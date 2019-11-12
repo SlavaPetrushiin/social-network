@@ -3,8 +3,6 @@ let state = {
 		posts : [
 			{message: "Hi, how are you", likesCount: 10},
 			{message: "It's my first post", likesCount: 25},
-			{message: "Hi, how are you", likesCount: 10},
-			{message: "It's my first post", likesCount: 25}	
 		]	
 	},
 	dialogsPage : {
