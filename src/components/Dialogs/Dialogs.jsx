@@ -9,9 +9,13 @@ const Dialogs = (props) => {
 	
 	let messagesText = React.createRef();
 	let addMessage = () => {
-		let userText = messagesText.current.value;
-		(userText === "") ? alert("Введите сообщение") : alert(userText);
+		props.addNewMessage();
 	};
+
+	let onMessageChange = () => {
+		let userText = messagesText.current.value;
+		props.updateNewMessage(userText);
+	}
 
 	return (
 		<div className={classes.dialogs}>
@@ -23,11 +27,15 @@ const Dialogs = (props) => {
 				<h3>Messages</h3>
 				{messagesElements}
 				<div className={classes.messagesAdd}>
-					<textarea ref={messagesText} className={classes.userMessage} placeholder="Введите сообщение"></textarea>
+					<textarea
+						ref={messagesText}
+						className={classes.userMessage}
+						placeholder="Введите сообщение"
+						value={props.state.newTextMessage}
+						onChange={onMessageChange}/>
 					<button
 						onClick = {addMessage}
-						className = {classes.addMessage}
-					>
+						className = {classes.addMessage}>
 						Добавить
 					</button> 
 				</div>

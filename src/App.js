@@ -10,26 +10,28 @@ import Musics from './components/Musics/Musics';
 import Settings from './components/Settings/Settings';
 
 const  App = (props) => {
-  return (
-		<BrowserRouter>
-			<div className="app-wrapper">
-				<Header />
-				<Navbar state={props.state.sidebar}/>
-				<div className ='app-wrapper-content'>
-					<Route
-						path={'/profile'}
-						render={ () => <Profile state={props.state.profilePage} /> }
-					/>
-					<Route
-						path={'/dialogs'}
-						render={ () => <Dialogs state={props.state.dialogsPage} /> }
-					/>
-					<Route path={'/news'} render={ () => <News /> }/>
-					<Route path={'/musics'} render={ () => <Musics /> }/>
-					<Route path={'/settings'} render={ () => <Settings /> }/>
-				</div>
+	return (
+		<div className="app-wrapper">
+			<Header />
+			<Navbar state={props.state.sidebar}/>
+			<div className ='app-wrapper-content'>
+				<Route
+					path={'/profile'}
+					render={ () => <Profile
+										state={props.state.profilePage}
+										addPost={props.addPost}
+										updateNewPostText={props.updateNewPostText}/>
+									}
+				/>
+				<Route
+					path={'/dialogs'}
+					render={ () => <Dialogs state={props.state.dialogsPage} addNewMessage={props.addNewMessage} updateNewMessage={props.updateNewMessage}/> }
+				/>
+				<Route path={'/news'} render={ () => <News /> }/>
+				<Route path={'/musics'} render={ () => <Musics /> }/>
+				<Route path={'/settings'} render={ () => <Settings /> }/>
 			</div>
-		</BrowserRouter>
+		</div>
   );
 }
 

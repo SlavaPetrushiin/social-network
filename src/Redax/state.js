@@ -1,9 +1,12 @@
+import {rerenderEntreTree} from './../render';
+
 let state = {
 	profilePage : {
 		posts : [
-			{message: "Hi, how are you", likesCount: 10},
-			{message: "It's my first post", likesCount: 25},
-		]	
+			{id: 1, message: "Hi, how are you", likesCount: 10},
+			{id: 2, message: "It's my first post", likesCount: 25},
+		],
+		newPostText: 'it-kamasutra.com'	
 	},
 	dialogsPage : {
 		dialogs : [
@@ -22,6 +25,7 @@ let state = {
 			{id : 3, message: 'Повседневная практика показывает, что синтетическое тестирование требует анализа укрепления моральных ценностей.'},
 			{id : 0, message: 'Мы вынуждены отталкиваться от того, что курс на социально-ориентированный национальный проект напрямую зависит от распределения внутренних резервов и ресурсов. Приятно, граждане, наблюдать, как некоторые особенности внутренней политики являются только методом политического участия и ассоциативно распределены по отраслям.'}
 		],
+		newTextMessage: ''
 	},
 	sidebar :{
 		friends : [
@@ -32,7 +36,34 @@ let state = {
 	}
 };
 
+export let addPost = () => {
+	let newPost = {
+		id: state.profilePage.posts.length + 1,
+		message: state.profilePage.newPostText,
+		likesCount: 0
+	}
+	state.profilePage.posts.push(newPost);
+	state.profilePage.newPostText = '';
+	rerenderEntreTree(state);
+};
 
+export let updateNewPostText = (newText) => {
+	state.profilePage.newPostText = newText;
+	rerenderEntreTree(state);
+};
+
+export let addNewMessage = () => {
+	let message = state.dialogsPage.newTextMessage;
+	let newMessage = {id : 0, message: message};
+	state.dialogsPage.messages.push(newMessage);
+	rerenderEntreTree(state);
+	state.dialogsPage.newTextMessage = '';
+}
+
+export let updateNewMessage = (newText) => {
+	state.dialogsPage.newTextMessage = newText;
+	rerenderEntreTree(state);
+};
 
 
 export default state;
