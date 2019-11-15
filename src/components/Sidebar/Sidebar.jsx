@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './Sidebar.module.css';
 import Friend from './Friend/Friend';
 
@@ -13,6 +14,10 @@ const Sidebar = (props) => {
 			</div>
 		</aside>
 	)
-}
+};
+
+Sidebar.propTypes = {
+	friends : PropTypes.array
+};
 
 export default Sidebar;

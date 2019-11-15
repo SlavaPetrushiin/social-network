@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 import Sidebar from './../Sidebar/Sidebar';
@@ -15,6 +16,6 @@ const Navbar = (props) => {
 			<Sidebar friends={props.state.friends}/>
 		</nav>
 	)
-}
+};
 
 export default Navbar;

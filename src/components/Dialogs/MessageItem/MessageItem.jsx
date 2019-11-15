@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './MessageItem.module.css';
 
 const MessageItem = (props) => {
@@ -11,6 +12,11 @@ const MessageItem = (props) => {
 			</div>
 		</div>
 	)
-}
+};
+
+MessageItem.propTypes = {
+	id : PropTypes.number.isRequired,
+	message : PropTypes.string,
+};
 
 export default MessageItem;

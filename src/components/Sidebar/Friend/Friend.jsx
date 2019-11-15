@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classes from './Friend.module.css';
 
 const Friend = (props) => {
@@ -10,6 +11,11 @@ const Friend = (props) => {
 			<div className={classes.friendName}>{props.friendName}</div>
 		</div>		
 	);
+};
+
+Friend.propTypes = {
+	friendUrl : PropTypes.string,
+	friendName : PropTypes.string
 }
 
 export default Friend;
