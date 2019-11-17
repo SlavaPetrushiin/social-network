@@ -19,13 +19,12 @@ const  App = (props) => {
 					path={'/profile'}
 					render={ () => <Profile
 										state={props.state.profilePage}
-										addPost={props.addPost}
-										updateNewPostText={props.updateNewPostText}/>
+										dispatch={props.dispatch}/>
 									}
 				/>
 				<Route
 					path={'/dialogs'}
-					render={ () => <Dialogs state={props.state.dialogsPage} addNewMessage={props.addNewMessage} updateNewMessage={props.updateNewMessage}/> }
+					render={ () => <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/> }
 				/>
 				<Route path={'/news'} render={ () => <News /> }/>
 				<Route path={'/musics'} render={ () => <Musics /> }/>
@@ -34,5 +33,6 @@ const  App = (props) => {
 		</div>
   );
 }
+
 
 export default App;

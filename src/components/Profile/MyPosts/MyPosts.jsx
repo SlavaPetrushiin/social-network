@@ -11,7 +11,9 @@ const MyPosts = (props) => {
 	let newPostElement = React.createRef();
 
 	let onAddPost = () => {
-		props.addPost();
+		props.dispatch({
+			type : 'ADD-POST'
+		});
 	};
 
 	let onPostChange = () => {
@@ -39,6 +41,8 @@ const MyPosts = (props) => {
 		</div>
 	)
 }
+
+console.log(MyPosts)
 
 MyPosts.defaultProps = {
 	newPostText : ''

@@ -1,5 +1,6 @@
 .friend{
 	width: 30%;
+	text-align: center;
 }
 
 .friendImg{
@@ -9,8 +10,15 @@
 .friendImg img{
 	display: inline-block;
 	width: 100%;
+	
 }
 
 .friendName{
-	text-align: center;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.activeLink{
+	color: #00BFFF;
+	font-weight: 700;
 }
