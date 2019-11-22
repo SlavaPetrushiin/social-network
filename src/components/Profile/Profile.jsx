@@ -5,6 +5,8 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
+	console.log(props)
+	debugger
 	return (
 		<div>
 			<ProfileInfo />
@@ -12,7 +14,6 @@ const Profile = (props) => {
 				posts={props.state.posts}
 				newPostText={props.state.newPostText}
 				dispatch={props.dispatch}
-				updateNewPostText={props.updateNewPostText}
 			/>
 		</div>
 	)

@@ -2,23 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
+import {postActionCreator, upDateNewPostTextActionCreator} from './../../../Redax/state'
 
 const MyPosts = (props) => {
+
 	let postsElements = props.posts.map(post => {
 		return <Post message={post.message} likesCount={post.likesCount}/>
-	})
-
+	});
+	debugger
 	let newPostElement = React.createRef();
 
 	let onAddPost = () => {
-		props.dispatch({
-			type : 'ADD-POST'
-		});
+		props.dispatch(postActionCreator());
 	};
 
 	let onPostChange = () => {
 		let text = newPostElement.current.value;
-		props.updateNewPostText(text);
+		props.dispatch(upDateNewPostTextActionCreator(text));
 	};
 
 	return (
@@ -41,8 +41,6 @@ const MyPosts = (props) => {
 		</div>
 	)
 }
-
-console.log(MyPosts)
 
 MyPosts.defaultProps = {
 	newPostText : ''
