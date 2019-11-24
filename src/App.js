@@ -9,29 +9,32 @@ import News from './components/News/News';
 import Musics from './components/Musics/Musics';
 import Settings from './components/Settings/Settings';
 
-const  App = (props) => {
-	return (
-		<div className="app-wrapper">
-			<Header />
-			<Navbar state={props.state.sidebar}/>
-			<div className ='app-wrapper-content'>
-				<Route
-					path={'/profile'}
-					render={ () => <Profile
-										state={props.state.profilePage}
-										dispatch={props.dispatch}/>
-									}
-				/>
-				<Route
-					path={'/dialogs'}
-					render={ () => <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/> }
-				/>
-				<Route path={'/news'} render={ () => <News /> }/>
-				<Route path={'/musics'} render={ () => <Musics /> }/>
-				<Route path={'/settings'} render={ () => <Settings /> }/>
+class  App extends React.Component {
+	render(){
+		return (
+			<div className="app-wrapper">
+				<Header />
+				<Navbar sidebar={this.props.state.sidebar}/>
+				<div className ='app-wrapper-content'>
+					<Route
+						path={'/profile'}
+						render={ () => <Profile
+											state={this.props.state.profilePage}
+											dispatch={this.props.dispatch}/>
+										}
+					/>
+					<Route
+						path={'/dialogs'}
+						render={ () => <Dialogs state={this.props.state.dialogsPage} dispatch={this.props.dispatch}/> }
+					/>
+					<Route path={'/news'} render={ () => <News /> }/>
+					<Route path={'/musics'} render={ () => <Musics /> }/>
+					<Route path={'/settings'} render={ () => <Settings /> }/>
+				</div>
 			</div>
-		</div>
-  );
+		);
+	}
+
 }
 
 

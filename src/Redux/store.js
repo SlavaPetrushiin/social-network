@@ -44,22 +44,12 @@ let store = {
 		this._callSuscriber = observer;
 	},
 	dispatch(action){
-		debugger
 		this._state.profilePage = profilePageReducer(this._state.profilePage, action);
 		this._state.dialogsPage = dialogsPageReducer(this._state.dialogsPage, action);
 		this._callSuscriber(this._state);
 	},
 	getState(){
 		return this._state;
-	}
-};
-
-export const postActionCreator = () => ({ type: 'ADD-POST' });
-
-export const upDateNewPostTextActionCreator = (text) => {
-	return {
-		type: 'UPDATE-NEW-POST-TEXT',
-		newText : text
 	}
 };
 

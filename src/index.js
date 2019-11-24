@@ -1,6 +1,6 @@
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import store from './Redax/state';
+import store from './Redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from "react-router-dom";
@@ -20,7 +20,10 @@ let rerenderEntreTree = function(state){
 
 rerenderEntreTree(store.getState()); 
 
-store.subscribe(rerenderEntreTree);
+store.subscribe(() => {
+	let state = store.getState();
+	rerenderEntreTree(state)
+});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

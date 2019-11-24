@@ -6,6 +6,7 @@ import Sidebar from './../Sidebar/Sidebar';
 
 
 const Navbar = (props) => {
+	console.log(props)
 	return (
 		<nav className={classes.nav}>
 			<NavLink to="/profile" activeClassName={classes.activeLink} className={`${classes.link}`}>Profile</NavLink>
@@ -13,7 +14,7 @@ const Navbar = (props) => {
 			<NavLink to="/news" activeClassName={classes.activeLink} className={`${classes.link}`}>News</NavLink>
 			<NavLink to="/musics" activeClassName={classes.activeLink} className={`${classes.link}`}>Musics</NavLink>
 			<NavLink to="/settings" activeClassName={classes.activeLink} className={`${classes.link}`}>Settings</NavLink>
-			<Sidebar friends={props.state.friends}/>
+			<Sidebar friends={props.sidebar.friends}/>
 		</nav>
 	)
 };

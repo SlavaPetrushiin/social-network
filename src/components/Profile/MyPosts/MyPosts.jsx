@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
-import {postActionCreator, upDateNewPostTextActionCreator} from './../../../Redax/state'
+import {postActionCreator, upDateNewPostTextActionCreator} from '../../../Redux/profilePage-reducer'
 
 const MyPosts = (props) => {
 
 	let postsElements = props.posts.map(post => {
 		return <Post message={post.message} likesCount={post.likesCount}/>
 	});
-	debugger
 	let newPostElement = React.createRef();
 
 	let onAddPost = () => {
