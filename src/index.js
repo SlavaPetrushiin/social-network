@@ -7,22 +7,20 @@ import {BrowserRouter} from "react-router-dom";
 import './index.css';
 import App from './App';
 
-let rerenderEntreTree = function(state){
+let rerenderEntreTree = function(store){
 		return ReactDOM.render(
 			<BrowserRouter>
 				<App
-					state={state}
-					dispatch={store.dispatch.bind(store)}/>
+					store={store}/>
 			</BrowserRouter>,
 			document.getElementById('root')
 		);
 };
 
-rerenderEntreTree(store.getState()); 
+rerenderEntreTree(store); 
 
 store.subscribe(() => {
-	let state = store.getState();
-	rerenderEntreTree(state)
+	rerenderEntreTree(store)
 });
 
 // If you want your app to work offline and load faster, you can change

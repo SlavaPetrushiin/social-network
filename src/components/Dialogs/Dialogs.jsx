@@ -5,21 +5,18 @@ import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
 
 const Dialogs = (props) => {
-	let dialogsElements = props.state.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} url={dialog.url} />);
-	let messagesElements = props.state.messages.map(message => <MessageItem message={message.message} id={message.id}/>);
+	let dialogsElements = props.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} url={dialog.url} />);
+	let messagesElements = props.messages.map(message => <MessageItem message={message.message} id={message.id}/>);
 	
 	let messagesText = React.createRef();
+
 	let addMessage = () => {
-		console.log(555)
-		props.dispatch({type : 'ADD-NEW-MESSAGE'});
+		props.messageActionCreator();
 	};
 
 	let onMessageChange = () => {
 		let userText = messagesText.current.value;
-		props.dispatch({
-			type : 'UPDATE-NEW-MESSAGE',
-			newText : userText
-		});
+		props.upDateNewMessageTextActionCreator(userText);
 	}
 
 	return (
@@ -36,7 +33,7 @@ const Dialogs = (props) => {
 						ref={messagesText}
 						className={classes.userMessage}
 						placeholder="Введите сообщение"
-						value={props.state.newTextMessage}
+						value={props.newTextMessage}
 						onChange={onMessageChange}/>
 					<button
 						onClick = {addMessage}
