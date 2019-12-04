@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
@@ -15,15 +15,15 @@ class  App extends React.Component {
 		return (
 			<div className="app-wrapper">
 				<Header />
-				<Navbar store={this.props.store}/>
+				<Navbar/>
 				<div className ='app-wrapper-content'>
 					<Route
 						path={'/profile'}
-						render={ () => <Profile store={this.props.store}/>}
+						render={ () => <Profile/>}
 					/>
 					<Route
 						path={'/dialogs'}
-						render={ () => <DialogsContainer store={this.props.store}/> }
+						render={ () => <DialogsContainer/> }
 					/>
 					<Route path={'/news'} render={ () => <News /> }/>
 					<Route path={'/musics'} render={ () => <Musics /> }/>
@@ -34,6 +34,5 @@ class  App extends React.Component {
 	}
 
 }
-
 
 export default App;
