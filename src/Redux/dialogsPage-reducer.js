@@ -25,14 +25,15 @@ const dialogsPageReducer = (state = initialState, action) => {
 	// eslint-disable-next-line default-case
 	switch(action.type){
 		case ADD_NEW_MESSAGE:
-			let message = state.newTextMessage;
-			let newMessage = {id : 0, message: message};
-			state.messages.push(newMessage);
-			state.newTextMessage = '';
-			break;
+			return {
+				...state,
+				messages : [...state.messages, {id : 0, message: state.newTextMessage}],
+				newTextMessage: ''
+			}
 		case UPDATE_NEW_MESSAGE:
-			state.newTextMessage = action.newText;
-			break;
+			return {
+				...state, newTextMessage : action.message
+			}
 	}
 	return state
 }

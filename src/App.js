@@ -7,7 +7,9 @@ import Profile from './components/Profile/Profile';
 import News from './components/News/News';
 import Musics from './components/Musics/Musics';
 import Settings from './components/Settings/Settings';
+import UsersContainer from './components/Users/UsersContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+
 
 class  App extends React.Component {
 	render(){
@@ -28,6 +30,7 @@ class  App extends React.Component {
 					<Route path={'/news'} render={ () => <News /> }/>
 					<Route path={'/musics'} render={ () => <Musics /> }/>
 					<Route path={'/settings'} render={ () => <Settings /> }/>
+					<Route path={'/users'} render={ () => <UsersContainer /> }/>
 				</div>
 			</div>
 		);

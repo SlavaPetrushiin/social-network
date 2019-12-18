@@ -2,31 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
-import {postActionCreator, upDateNewPostTextActionCreator} from '../../../Redux/profilePage-reducer'
 
 const MyPosts = (props) => {
-
+	
 	let postsElements = props.posts.map(post => {
 		return <Post message={post.message} likesCount={post.likesCount}/>
 	});
-	let newPostElement = React.createRef();
 
 	let onAddPost = () => {
-		props.postActionCreator();
+		props.onNewAddPost();
 	};
 
-	let onPostChange = () => {
-		let text = newPostElement.current.value;
-		props.upDateNewPostTextActionCreator(text);
+	let onPostChange = (e) => {
+		props.onNewPostChange(e.currentTarget.value);
 	};
-
+	debugger
 	return (
+		
 		<div className={classes.posts}>
 			MyPost
 			<div>
 				<div>
 					<textarea
-						ref={newPostElement}
 						value={props.newPostText}
 						onChange={onPostChange}>
 					</textarea>
