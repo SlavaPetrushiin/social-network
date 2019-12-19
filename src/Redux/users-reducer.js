@@ -6,7 +6,6 @@ let initialState = {users : []};
 
 const usersReducer = (state = initialState, action) => { //принимет state и action
 	// eslint-disable-next-line default-case
-			debugger
 	switch(action.type){
 
 		case FOLLOW :
