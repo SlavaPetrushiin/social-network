@@ -1,8 +1,14 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SETUSERS = 'SET_USERS';
+const CHANGEPAGEUSERS = 'CHANGE_PAGE_USERS';
 
-let initialState = {users : []};
+let initialState = {
+	users : [],
+	totalCount : 0,
+	sizePage : 50,
+	page : 1
+};
 
 const usersReducer = (state = initialState, action) => { //принимет state и action
 	// eslint-disable-next-line default-case
@@ -24,11 +30,17 @@ const usersReducer = (state = initialState, action) => { //принимет stat
 					return user;
 				})
 			}
-			case SETUSERS :
-				return {
-					...state,
-					users : [...state.users, ...action.users ]
-				}			
+		case SETUSERS :
+			return {
+				...state,
+				users : action.users,
+				totalCount : action.totalCount
+			}
+		case CHANGEPAGEUSERS :
+			return {
+				...state,
+				page : Number(action.page)
+			}				
 	}
 
 	return state
@@ -36,8 +48,10 @@ const usersReducer = (state = initialState, action) => { //принимет stat
 
 export default usersReducer;
 
-export const followAC = (userId) => ({ type: 'FOLLOW', userId });
+export const followAC = (userId) => ({ type: FOLLOW, userId });
 
-export const unfollowAC = (userId) => ({ type: 'UNFOLLOW', userId });
+export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 
-export const setUsersAC = (users) => ({ type: 'SET_USERS', users});
+export const setUsersAC = (users, totalCount) => ({ type: SETUSERS, users : users, totalCount : totalCount});
+
+export const newPagewAC = (page) => ({ type: CHANGEPAGEUSERS, page });
