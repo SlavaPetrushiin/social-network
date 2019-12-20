@@ -2,3 +2,13 @@
 	width: 100px;
 	height: 100px;
 }
+
+.pageUser {
+	margin: 0 3px;
+	font-size: 20px;
+}
+
+.pageUser.active{
+	font-weight: bold;
+	text-decoration: underline;
+}

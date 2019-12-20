@@ -1,21 +1,24 @@
 import React from 'react';
 import classes from './Users.module.css'
-import * as axios from 'axios';
 import standartPhoto from './../../assets/image/standartPhoto.jpg';
 
 
 class Users extends React.Component {
-
-	componentDidMount(){
-		axios.get('https://social-network.samuraijs.com/api/1.0/users')
-			.then(response => {
-				this.props.setUsers(response.data.items);
-			})		
-	}
-
 	render(){
+		let usersPages = Math.ceil(this.props.totalCount / this.props.sizePage);
+		let paginationUsers = [];
+
+		for (let i = 1; i <= usersPages; i++){
+			if(this.props.page === i) {
+				paginationUsers.push(<span onClick={this.props.handleClickPageUsers} className={`${classes.pageUser} ${classes.active}`}>{i}</span>)
+			} else {
+				paginationUsers.push(<span onClick={this.props.handleClickPageUsers} className={`${classes.pageUser}`}>{i}</span>)
+			}
+		}
+
 		return (
 			<div>
+				<div>{paginationUsers}</div>
 				{
 					this.props.users.map(user => {
 						return <div key={user.id}>
