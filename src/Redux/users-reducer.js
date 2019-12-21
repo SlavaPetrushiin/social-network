@@ -9,7 +9,7 @@ let initialState = {
 	totalCount : 0,
 	sizePage : 50,
 	page : 1,
-	isLoader : false 
+	isPreloader : false 
 };
 
 const usersReducer = (state = initialState, action) => { //принимет state и action
@@ -43,10 +43,10 @@ const usersReducer = (state = initialState, action) => { //принимет stat
 				page : Number(action.page)
 			}
 		case CHANGE_IS_LOADER :
-			console.log(action)
+			console.log(action.bulLoader)
 			return {
 				...state,
-				isLoader : action.bulLoader
+				isPreloader : action.bulLoader
 			}			
 		default : 
 			return state
@@ -55,12 +55,12 @@ const usersReducer = (state = initialState, action) => { //принимет stat
 
 export default usersReducer;
 
-export const followAC = (userId) => ({ type: FOLLOW, userId });
+export const follow = (userId) => ({ type: FOLLOW, userId });
 
-export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
+export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
 
-export const setUsersAC = (users, totalCount) => ({ type: SETUSERS, users : users, totalCount : totalCount});
+export const setUsers = (users, totalCount) => ({ type: SETUSERS, users : users, totalCount : totalCount});
 
-export const newPagewAC = (page) => ({ type: CHANGE_PAGE_USERS, page });
+export const newPage = (page) => ({ type: CHANGE_PAGE_USERS, page });
 
-export const isLoaderAC = (bulLoader) => ({ type: CHANGE_IS_LOADER, bulLoader });
+export const isLoader = (bulLoader) => ({ type: CHANGE_IS_LOADER, bulLoader });
