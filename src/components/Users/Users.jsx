@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Users.module.css'
 import standartPhoto from './../../assets/image/standartPhoto.jpg';
 
-
 class Users extends React.Component {
 	render(){
 		let usersPages = Math.ceil(this.props.totalCount / this.props.sizePage);
@@ -18,6 +17,8 @@ class Users extends React.Component {
 
 		return (
 			<div>
+				<div>
+				</div>
 				<div>{paginationUsers}</div>
 				{
 					this.props.users.map(user => {

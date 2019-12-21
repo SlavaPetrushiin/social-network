@@ -2,38 +2,49 @@ import React from 'react';
 import * as axios from 'axios';
 import Users from './Users';
 import { connect } from 'react-redux'
-import {followAC, unfollowAC, setUsersAC, newPagewAC} from './..//../Redux/users-reducer'
+import {followAC, unfollowAC, setUsersAC, newPagewAC, isLoaderAC} from './..//../Redux/users-reducer'
+import Preloader from '../common/Preloader/Preloader';
 
 class UsersAPI extends React.Component{
-
 	componentDidMount(){
+		this.props.changeIsLoader(true) // Запускаю прелодер
+
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=15&page=${this.props.page}`)
 			.then(response => {
+				this.props.changeIsLoader(false) // Отменяю запуск прелодер
 				this.props.setUsers(response.data.items, response.data.totalCount);
 			})		
 	}
 
 	handleClickPageUsers = (e) => {
+		this.props.changeIsLoader(true) // Запускаю прелодер
 		let page = e.currentTarget.innerText;
 		this.props.changePage(page);
 		
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=15&page=${page}`)
 		.then(response => {
+			this.props.changeIsLoader(false) // Отменяю запуск прелодер
 			this.props.setUsers(response.data.items, response.data.totalCount);
 		}) 
 	}
 
 	render(){
 		return (
-			<Users 
-				totalCount={this.props.totalCount}
-				sizePage={this.props.sizePage}
-				users={this.props.users}
-				page={this.props.page}
-				handleClickPageUsers={this.handleClickPageUsers}
-				follow={this.props.follow}
-				unfollow={this.props.unfollow}
-			/>
+			<>
+				{
+					(this.props.isLoader)
+						? <Preloader />
+						: <Users 
+							totalCount={this.props.totalCount}
+							sizePage={this.props.sizePage}
+							users={this.props.users}
+							page={this.props.page}
+							handleClickPageUsers={this.handleClickPageUsers}
+							follow={this.props.follow}
+							unfollow={this.props.unfollow}
+					/>
+				}
+			</>
 		)
 	}
 }
@@ -45,6 +56,7 @@ let mapStateToProps = (state) => {
 		totalCount : state.usersPage.totalCount,
 		sizePage : state.usersPage.sizePage,
 		page : state.usersPage.page,
+		isLoader : state.usersPage.isLoader
 	}
 }
 
@@ -61,6 +73,9 @@ let mapDispatchToProps = (dispatch) => {
 		},
 		changePage: (page) => {
 			dispatch(newPagewAC(page))
+		},
+		changeIsLoader: (bulLoader) => {
+			dispatch(isLoaderAC(bulLoader))
 		}
 	}
 }
