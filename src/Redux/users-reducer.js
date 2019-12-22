@@ -43,7 +43,6 @@ const usersReducer = (state = initialState, action) => { //принимет stat
 				page : Number(action.page)
 			}
 		case CHANGE_IS_LOADER :
-			console.log(action.bulLoader)
 			return {
 				...state,
 				isPreloader : action.bulLoader

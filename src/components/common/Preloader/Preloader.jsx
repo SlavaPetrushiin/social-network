@@ -1,9 +1,11 @@
 import React from 'react';
-import loader from '../../../assets/image/loader.svg';
+import './Preloader.css';
 
 const Preloader = (props) => {
 	return (
-		<img src={loader} alt="loader"/>
+		<>
+			<div class="lds-ripple"><div></div><div></div></div>
+		</>
 	)
 };
 
