@@ -16,7 +16,6 @@ const MyPosts = (props) => {
 	let onPostChange = (e) => {
 		props.onNewPostChange(e.currentTarget.value);
 	};
-	debugger
 	return (
 		
 		<div className={classes.posts}>

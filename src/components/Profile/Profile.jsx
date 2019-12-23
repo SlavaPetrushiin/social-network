@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 
-const Profile = (props) => {
+const Profile = ({profile}) => {
 	return (
 		<div>
-			<ProfileInfo />
+			<ProfileInfo profile={profile}/>
 			<MyPostsContainer />
 		</div>
 	)
