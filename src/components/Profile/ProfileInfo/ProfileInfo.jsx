@@ -2,6 +2,20 @@ import React from 'react';
 import classes from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 
+function showUserProfile(profile){
+	return(
+		<div>
+			<div className={classes.blockUserPhoto}>
+				<img src={profile.photos.small} alt='photo'/>
+			</div>
+			<div>
+				<h2>{profile.fullName}</h2>
+				<p>{profile.aboutMe}</p>
+			</div>
+		</div>
+	)
+}
+
 const ProfileInfo = ({profile}) => {
 	return (
 		<div>
@@ -11,7 +25,7 @@ const ProfileInfo = ({profile}) => {
 			<div className={classes.descriptionBlock}>
 				{!profile 
 					? <Preloader />
-					: <img src={profile.photos.small} alt='photo'/>
+					: showUserProfile(profile)
 				}
 				
 				Ava + description gg
