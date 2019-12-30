@@ -9,7 +9,9 @@ class UsersAPI extends React.Component{
 	componentDidMount(){
 		this.props.isLoader(true) // Запускаю прелодер
 
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=15&page=${this.props.page}`)
+		axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=15&page=${this.props.page}`, {
+			withCredentials : true
+		})
 			.then(response => {
 				this.props.isLoader(false) // Отменяю запуск прелодер
 				this.props.setUsers(response.data.items, response.data.totalCount);

@@ -6,7 +6,7 @@ function showUserProfile(profile){
 	return(
 		<div>
 			<div className={classes.blockUserPhoto}>
-				<img src={profile.photos.small} alt='photo'/>
+				<img src={profile.photos.small} alt='User_avatar'/>
 			</div>
 			<div>
 				<h2>{profile.fullName}</h2>
@@ -20,7 +20,7 @@ const ProfileInfo = ({profile}) => {
 	return (
 		<div>
 			<div className={classes.infoImg}>
-				<img src="http://u-f.ru/sites/default/files/styles/main_700/public/uploads/170851.jpg"/>
+				<img src="http://u-f.ru/sites/default/files/styles/main_700/public/uploads/170851.jpg" alt="air"/>
 			</div>
 			<div className={classes.descriptionBlock}>
 				{!profile 
