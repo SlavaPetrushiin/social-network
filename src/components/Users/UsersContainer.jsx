@@ -1,20 +1,17 @@
 import React from 'react';
-import * as axios from 'axios';
 import Users from './Users';
 import { connect } from 'react-redux'
 import {follow, unfollow, setUsers, newPage, isLoader} from './..//../Redux/users-reducer'
 import Preloader from '../common/Preloader/Preloader';
+import { usersUPI } from './../../api/api';
 
 class UsersAPI extends React.Component{
 	componentDidMount(){
 		this.props.isLoader(true) // Запускаю прелодер
-
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=15&page=${this.props.page}`, {
-			withCredentials : true
-		})
-			.then(response => {
+		const { page, sizePage } = this.props //деструктурирую значения 
+		usersUPI.getUsers(page, sizePage).then(response => {
 				this.props.isLoader(false) // Отменяю запуск прелодер
-				this.props.setUsers(response.data.items, response.data.totalCount);
+				this.props.setUsers(response.items, response.totalCount);
 			})		
 	}
 
@@ -22,11 +19,10 @@ class UsersAPI extends React.Component{
 		this.props.isLoader(true) // Запускаю прелодер
 		let page = e.currentTarget.innerText;
 		this.props.newPage(page);
-		
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=15&page=${page}`)
-		.then(response => {
+		const { sizePage } = this.props
+		usersUPI.getUsers(page, sizePage).then(response => {
 			this.props.isLoader(false) // Отменяю запуск прелодер
-			this.props.setUsers(response.data.items, response.data.totalCount);
+			this.props.setUsers(response.items, response.totalCount);
 		}) 
 	}
 

@@ -3,6 +3,7 @@ import classes from './Users.module.css'
 import standartPhoto from './../../assets/image/standartPhoto.jpg';
 import * as axios from 'axios';
 import {NavLink} from "react-router-dom";
+import { usersUPI } from './../../api/api';
 
 class Users extends React.Component {
 	render(){
@@ -37,14 +38,9 @@ class Users extends React.Component {
 								{user.followed
 
 									? <button onClick={() => {
-										axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-											withCredentials : true,
-											headers : {
-												'API-KEY' : '4f784e15-0555-4b7d-a7c1-c9d2f74d92fa'
-											}
-										})
+										usersUPI.deleteUsersFriends(user.id)
 											.then(response => {
-												if(response.data.resultCode === 0){
+												if(response.resultCode === 0){
 													this.props.follow(user.id);
 												}
 											})
@@ -56,14 +52,9 @@ class Users extends React.Component {
 									}>UnFollow</button>
 
 									: <button onClick={() => {
-										axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, null, {
-											withCredentials : true,
-											headers : {
-												'API-KEY' : '4f784e15-0555-4b7d-a7c1-c9d2f74d92fa'
-											}
-										})
+										usersUPI.postUsersFriends(user.id)
 											.then(response => {
-												if(response.data.resultCode === 0){
+												if(response.resultCode === 0){
 													this.props.unfollow(user.id)
 												}
 											})
