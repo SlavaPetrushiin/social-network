@@ -7,7 +7,7 @@ const CHANGE_IS_LOADER = 'CHANGE_IS_LOADER';
 let initialState = {
 	users : [],
 	totalCount : 0,
-	sizePage : 50,
+	sizePage : 40,
 	page : 1,
 	isPreloader : false 
 };
@@ -58,7 +58,7 @@ export const follow = (userId) => ({ type: FOLLOW, userId });
 
 export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
 
-export const setUsers = (users, totalCount) => ({ type: SETUSERS, users : users, totalCount : totalCount});
+export const setUsers = (users, totalCount) => ({ type: SETUSERS, users, totalCount});
 
 export const newPage = (page) => ({ type: CHANGE_PAGE_USERS, page });
 
