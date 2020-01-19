@@ -15,7 +15,7 @@ export const usersUPI = {
 			.then(response => response.data)
 	},
 
-	getAuthMe() {
+	getAuthMe() { //авторизация
 		return instance.get(`auth/me`)
 			.then(response => response.data)
 	},
@@ -29,9 +29,11 @@ export const usersUPI = {
 		return instance.post(`follow/${userId}`)
 			.then(response => {
 				return response.data})
+	},
+	getProfileUser(userId){
+		return instance.get(`profile/${userId}`)
 	}
 }
-
 
 
 
