@@ -1,9 +1,7 @@
 import React from 'react';
 import classes from './Users.module.css'
 import standartPhoto from './../../assets/image/standartPhoto.jpg';
-import * as axios from 'axios';
 import {NavLink} from "react-router-dom";
-import { usersUPI } from './../../api/api';
 
 class Users extends React.Component {
 	render(){
@@ -36,33 +34,8 @@ class Users extends React.Component {
 							</div>
 							<div>
 								{user.followed
-
-									? <button onClick={() => {
-										usersUPI.deleteUsersFriends(user.id)
-											.then(response => {
-												if(response.resultCode === 0){
-													this.props.follow(user.id);
-												}
-											})
-											.catch(err => {
-												console.log(err)
-											})
-												
-										}
-									}>UnFollow</button>
-
-									: <button onClick={() => {
-										usersUPI.postUsersFriends(user.id)
-											.then(response => {
-												if(response.resultCode === 0){
-													this.props.unfollow(user.id)
-												}
-											})
-											.catch(err => {
-												console.log(err)
-											})																						
-										}
-									}>Follow</button>
+									? <button onClick={() => {this.props.unfollow(user.id)}}>UnFollow</button> //функция thunk для кнопки
+									: <button onClick={() => {this.props.follow(user.id)}}>Follow</button>
 								}
 							</div>
 							<div>

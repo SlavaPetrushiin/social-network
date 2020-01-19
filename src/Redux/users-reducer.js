@@ -1,3 +1,4 @@
+import {usersUPI} from "../api/api";
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SETUSERS = 'SET_USERS';
@@ -52,14 +53,60 @@ const usersReducer = (state = initialState, action) => { //принимет stat
 	}
 }
 
-export default usersReducer;
+export const followSucces = (userId) => ({ type: FOLLOW, userId });
 
-export const follow = (userId) => ({ type: FOLLOW, userId });
-
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const unfollowSucces = (userId) => ({ type: UNFOLLOW, userId });
 
 export const setUsers = (users, totalCount) => ({ type: SETUSERS, users, totalCount});
 
 export const newPage = (page) => ({ type: CHANGE_PAGE_USERS, page });
 
 export const isLoader = (bulLoader) => ({ type: CHANGE_IS_LOADER, bulLoader });
+
+//thunks
+export const getUsersThunkCreator = (page, sizePage) => {
+	return (dispatch) => {
+		dispatch(isLoader(true)) // Запускаю прелодер
+		usersUPI.getUsers(page, sizePage).then(response => {
+			dispatch(isLoader(false)) // Отменяю запуск прелодер
+			dispatch(setUsers(response.items, response.totalCount));
+		})
+	}
+};
+
+//Санка по клику на новую страницу
+export const getNewPageUsersThank = (page, sizePage) => (dispatch) => {
+	dispatch(isLoader(true)) // Запускаю прелодер
+	dispatch(newPage(page));
+	usersUPI.getUsers(page, sizePage).then(response => {
+		dispatch(isLoader(false)) // Отменяю запуск прелодер
+		dispatch(setUsers(response.items, response.totalCount));
+	})
+};
+
+export const follow = (userId) => (dispatch) => {
+	usersUPI.follow(userId)
+		.then(response => {
+			if(response.resultCode === 0){
+				dispatch(unfollowSucces(userId))
+			}
+		})
+		.catch(err => {
+			console.log(err)
+		})
+};
+
+export const unfollow = (userId) => (dispatch) => {
+	usersUPI.unFollow(userId)
+		.then(response => {
+			if(response.resultCode === 0){
+				dispatch(followSucces(userId));
+			}
+		})
+		.catch(err => {
+			console.log(err)
+		})
+}
+
+
+export default usersReducer;
