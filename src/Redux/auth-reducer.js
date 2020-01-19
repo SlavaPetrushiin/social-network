@@ -1,3 +1,5 @@
+import {usersUPI} from "../api/api";
+
 const SET_USER_DATA = 'SET-USER-DATA';
 
 let initialState = {
@@ -28,5 +30,16 @@ export const setUserData = (id, email, login) => {
 		}
 	}
 };
+
+//thunk
+export const getAuthMe = () => (dispatch) => {
+	usersUPI.getAuthMe()
+		.then(response => {
+			if(response.resultCode === 0){
+				let {id, email, login} = response.data;
+				dispatch(setUserData(id, email, login))
+			}
+		})
+}
 
 export default authReduser;
