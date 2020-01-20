@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
+import {Redirect} from "react-router-dom";
 
-const Profile = ({profile}) => {
+const Profile = (props) => {
+	const {profile} = props;
+	if(props.isAuth === false) return <Redirect to="/login"/> //Если не авторизован, то на страницу Login
 	return (
 		<div>
 			<ProfileInfo profile={profile}/>

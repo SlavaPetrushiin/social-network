@@ -14,17 +14,10 @@ export const usersUPI = {
 		return instance.get(`users?count=${pageSize}&page=${page}`)
 			.then(response => response.data)
 	},
-
-	getAuthMe() { //авторизация
-		return instance.get(`auth/me`)
-			.then(response => response.data)
-	},
-
 	unFollow(userId){
 		return instance.delete(`follow/${userId}`)
 			.then(response => response.data)
 	},
-
 	follow(userId){
 		return instance.post(`follow/${userId}`)
 			.then(response => {
@@ -33,6 +26,13 @@ export const usersUPI = {
 	getProfileUser(userId){
 		return instance.get(`profile/${userId}`)
 	}
+};
+
+export const authIP = {
+	getAuthMe() { //авторизация
+		return instance.get(`auth/me`)
+			.then(response => response.data)
+	},
 }
 
 

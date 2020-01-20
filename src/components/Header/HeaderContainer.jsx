@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import Header from './Header';
-import {getAuthMe, setUserData} from '../../Redux/auth-reducer';
-import { usersUPI } from './../../api/api';
+import {getAuthMe} from "../../Redux/auth-reducer";
 
 class HeaderContainer extends React.Component{
 	componentDidMount(){
@@ -25,9 +24,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		setUserData : (id, email, login) => {
-			dispatch(setUserData(id, email, login))
-		},
 		getAuthMe : () => {
 			dispatch(getAuthMe())
 		}

@@ -1,4 +1,4 @@
-import {usersUPI} from "../api/api";
+import {authIP, usersUPI} from "../api/api";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 
@@ -12,6 +12,7 @@ let initialState = {
 const authReduser = (state = initialState, action) => {
 	switch(action.type){
 		case SET_USER_DATA:
+			debugger
 			return {
 				...state,
 				...action.data,
@@ -33,7 +34,7 @@ export const setUserData = (id, email, login) => {
 
 //thunk
 export const getAuthMe = () => (dispatch) => {
-	usersUPI.getAuthMe()
+	authIP.getAuthMe()
 		.then(response => {
 			if(response.resultCode === 0){
 				let {id, email, login} = response.data;
