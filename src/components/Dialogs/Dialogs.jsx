@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
-import {Redirect} from "react-router-dom";
-
-
-
 
 const Dialogs = (props) => {
-	if(props.isAuth === false) return <Redirect to="/login"/> //Если не авторизован, то на страницу Login
+
 
 	let dialogsElements = props.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} url={dialog.url} />);
 	let messagesElements = props.messages.map(message => <MessageItem message={message.message} id={message.id}/>);
