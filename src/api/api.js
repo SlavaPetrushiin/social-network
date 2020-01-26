@@ -25,7 +25,15 @@ export const usersUPI = {
 	},
 	getProfileUser(userId){
 		return instance.get(`profile/${userId}`)
-	}
+	},
+	getProfileUserStatus(userId){
+		return instance.get(`profile/status/${userId}`)
+	},
+	putProfileUserStatus(newStatus){
+		debugger
+		return instance.put(`profile/status/`, {status : newStatus})
+	},
+
 };
 
 export const authIP = {

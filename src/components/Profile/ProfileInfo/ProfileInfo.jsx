@@ -18,7 +18,6 @@ function showUserProfile(profile){
 }
 
 const ProfileInfo = (props) => {
-	debugger
 	return (
 		<div>
 			<div className={classes.descriptionBlock}>
@@ -27,7 +26,7 @@ const ProfileInfo = (props) => {
 					: showUserProfile(props.profile)
 				}
 				
-				<ProfileStatus status={"Hello my friends"}/>
+				<ProfileStatus status={"Hello my friends"} putProfileUserStatus={props.putProfileUserStatus}/>
 			</div>
 		</div>
 	)

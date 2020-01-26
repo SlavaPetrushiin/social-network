@@ -2,19 +2,19 @@ import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux'
 import { withRouter} from 'react-router-dom';
-import {getProfileUser} from "../../Redux/profilePage-reducer";
+import {getProfileUser, putProfileUserStatus} from "../../Redux/profilePage-reducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+
 
 class ProfileContainer extends React.Component{
 	componentDidMount(){
 		let userId = this.props.match.params.userId;
-		if(!userId) userId = 2;
+		if (!userId) userId = 2;
 		this.props.getProfileUser(userId) //функция по запросу профиля thunk
 	}
 
 	render(){
-	debugger
 		return (
 			<div>
 				<Profile {...this.props} profile={this.props.profile}/>
@@ -30,7 +30,7 @@ let mapStateToProps = (state) =>  {
 };
 
 export default compose(
-	connect(mapStateToProps, {getProfileUser}),
+	connect(mapStateToProps, {getProfileUser, putProfileUserStatus}),
 	withRouter,
 	// withAuthRedirect
 )(ProfileContainer);
