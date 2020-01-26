@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
+import ProfileStatus from "./ProfileStatus";
 
 function showUserProfile(profile){
 	return(
@@ -16,19 +17,17 @@ function showUserProfile(profile){
 	)
 }
 
-const ProfileInfo = ({profile}) => {
+const ProfileInfo = (props) => {
+	debugger
 	return (
 		<div>
-			<div className={classes.infoImg}>
-				<img src="http://u-f.ru/sites/default/files/styles/main_700/public/uploads/170851.jpg" alt="air"/>
-			</div>
 			<div className={classes.descriptionBlock}>
-				{!profile 
+				{!props.profile
 					? <Preloader />
-					: showUserProfile(profile)
+					: showUserProfile(props.profile)
 				}
 				
-				Ava + description gg
+				<ProfileStatus status={"Hello my friends"}/>
 			</div>
 		</div>
 	)
