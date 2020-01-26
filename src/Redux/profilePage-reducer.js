@@ -1,8 +1,9 @@
-import {usersUPI} from "../api/api";
+import {profileUPI, usersUPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_USER_STATUS = 'SET-USER-STATUS';
 
 let initialState = {
     posts: [
@@ -10,7 +11,8 @@ let initialState = {
         {id: 2, message: "It's my first post", likesCount: 25},
     ],
     newPostText: 'it-kamasutra.com',
-    profile: null
+    profile: null,
+    status: ""
 }
 
 const profilePageReducer = (state = initialState, action) => { //принимет state и action
@@ -37,6 +39,10 @@ const profilePageReducer = (state = initialState, action) => { //приниме�
             return {
                 ...state, profile: action.profile
             }
+        case SET_USER_STATUS :
+            return {
+                ...state, status: action.status
+            }
     }
 
     return state
@@ -48,21 +54,26 @@ export const upDateNewPostTextActionCreator = (text) => ({type: 'UPDATE-NEW-POST
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 
+export const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
+
 
 //thunk
-export const getProfileUser = (userId) => async (dispatch) => {
-    const response = await usersUPI.getProfileUser(userId);
-    const status = await usersUPI.getProfileUserStatus(userId);
-    const profile = {
-    	...status.data,
-		...response.data
-	};
-    dispatch(setUserProfile(profile));
+export const getProfileUser = (userId) => (dispatch) => {
+    profileUPI.getProfileUser(userId).then(response => {
+        dispatch(setUserProfile(response.data));
+    });
+}
+
+export const getUserStatus = (userId) => (dispatch) => {
+    profileUPI.getProfileUserStatus(userId).then(response => {
+        dispatch(setUserStatus(response.data));
+    });
 }
 
 export const putProfileUserStatus = (newStatus) => (dispatch) => {
-	usersUPI.putProfileUserStatus(newStatus).then(respone => {
-		debugger
+    profileUPI.putProfileUserStatus(newStatus).then(response => {
+	    debugger
+        dispatch(setUserStatus(newStatus));
 	});
 }
 

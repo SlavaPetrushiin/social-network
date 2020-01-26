@@ -26,7 +26,7 @@ const ProfileInfo = (props) => {
 					: showUserProfile(props.profile)
 				}
 				
-				<ProfileStatus status={"Hello my friends"} putProfileUserStatus={props.putProfileUserStatus}/>
+				<ProfileStatus status={props.status} putProfileUserStatus={props.putProfileUserStatus}/>
 			</div>
 		</div>
 	)

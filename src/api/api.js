@@ -22,16 +22,19 @@ export const usersUPI = {
 		return instance.post(`follow/${userId}`)
 			.then(response => {
 				return response.data})
-	},
+	}
+};
+
+export const profileUPI = {
 	getProfileUser(userId){
-		return instance.get(`profile/${userId}`)
+		return instance.get(`profile/${userId}`);
 	},
 	getProfileUserStatus(userId){
-		return instance.get(`profile/status/${userId}`)
+		return instance.get(`profile/status/${userId}`);
 	},
 	putProfileUserStatus(newStatus){
 		debugger
-		return instance.put(`profile/status/`, {status : newStatus})
+		return instance.put(`profile/status/`, {status : newStatus});
 	},
 
 };

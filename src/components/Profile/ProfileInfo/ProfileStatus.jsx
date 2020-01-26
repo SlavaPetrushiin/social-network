@@ -16,6 +16,7 @@ class ProfileStatus extends React.Component {
 
     deactivationEditMode = () => {
         this.setState({addedMode: false});
+        debugger
         this.props.putProfileUserStatus(this.state.status);
     };
 
@@ -24,7 +25,7 @@ class ProfileStatus extends React.Component {
             <div>
                 {this.state.addedMode
                     ? <input onChange={this.handleChange} autoFocus={true} onBlur={this.deactivationEditMode} type="text" value={this.state.status}/>
-                    : <span onDoubleClick={this.activeEditMode}>{this.state.status}</span>
+                    : <span onDoubleClick={this.activeEditMode}>{this.props.status}</span>
                 }
             </div>
         )
