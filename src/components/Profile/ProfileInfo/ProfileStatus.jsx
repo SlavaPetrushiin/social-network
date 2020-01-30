@@ -16,9 +16,16 @@ class ProfileStatus extends React.Component {
 
     deactivationEditMode = () => {
         this.setState({addedMode: false});
-        debugger
         this.props.putProfileUserStatus(this.state.status);
     };
+
+    componentWillReceiveProps(nextProp) {
+        debugger
+        let status = this.props.status;
+        if(status !== nextProp.status){
+            this.setState({status: nextProp.status})
+        }
+    }
 
     render() {
         return (

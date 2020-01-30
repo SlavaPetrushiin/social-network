@@ -5,7 +5,6 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 const Profile = (props) => {
 	const {profile, status, putProfileUserStatus} = props;
-	debugger
 	return (
 		<div>
 			<ProfileInfo profile={profile} putProfileUserStatus={putProfileUserStatus} status={status}/>
