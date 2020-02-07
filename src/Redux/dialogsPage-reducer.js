@@ -1,5 +1,4 @@
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 
 let initialState = {
 	dialogs : [
@@ -18,33 +17,21 @@ let initialState = {
 		{id : 3, message: 'Повседневная практика показывает, что синтетическое тестирование требует анализа укрепления моральных ценностей.'},
 		{id : 0, message: 'Мы вынуждены отталкиваться от того, что курс на социально-ориентированный национальный проект напрямую зависит от распределения внутренних резервов и ресурсов. Приятно, граждане, наблюдать, как некоторые особенности внутренней политики являются только методом политического участия и ассоциативно распределены по отраслям.'}
 	],
-	newTextMessage: ''	
 }
 
 const dialogsPageReducer = (state = initialState, action) => {
-	// eslint-disable-next-line default-case
 	switch(action.type){
 		case ADD_NEW_MESSAGE:
+			debugger
 			return {
 				...state,
-				messages : [...state.messages, {id : 0, message: state.newTextMessage}],
-				newTextMessage: ''
+				messages : [...state.messages, {id : 0, message: action.newMessageBody}],
 			}
-		case UPDATE_NEW_MESSAGE:
-			return {
-				...state, newTextMessage : action.message
-			}
+		default :
+			return state;
 	}
-	return state
 }
 
-export const messageActionCreator = () => ({ type: 'ADD-NEW-MESSAGE' });
-
-export const upDateNewMessageTextActionCreator = (text) => {
-	return {
-		type: 'UPDATE-NEW-MESSAGE',
-		message : text
-	}
-};
+export const messageActionCreator = (newMessageBody) => ({ type: 'ADD-NEW-MESSAGE', newMessageBody });
 
 export default dialogsPageReducer;
