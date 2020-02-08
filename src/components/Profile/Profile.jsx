@@ -4,7 +4,6 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 const Profile = (props) => {
-	debugger
 	const {profile, status, putProfileUserStatus} = props;
 	return (
 		<div>

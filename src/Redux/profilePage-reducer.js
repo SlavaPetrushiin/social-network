@@ -17,7 +17,6 @@ const profilePageReducer = (state = initialState, action) => { //приниме�
     // eslint-disable-next-line default-case
     switch (action.type) {
         case ADD_POST:
-            debugger
             let newPost = {
                 id: state.posts.length + 1,
                 message: action.newPostText,

@@ -9,7 +9,6 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component{
 	componentDidMount(){
-		debugger
 		let userId = this.props.match.params.userId;
 		if (!userId) userId = 2;
 		this.props.getProfileUser(userId); //функция по запросу профиля thunk
@@ -29,7 +28,6 @@ let mapStateToProps = (state) =>  {
 	return {
 		profile : state.profilePage.profile,
 		status : state.profilePage.status,
-		// posts : state.profilePage.posts //мне не нравится ! используется только для отправки запроса при добавлнеии поста
 	}
 };
 
