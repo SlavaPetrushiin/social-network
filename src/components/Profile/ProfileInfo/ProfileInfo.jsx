@@ -3,28 +3,35 @@ import classes from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatus from "./ProfileStatus";
 
-function showUserProfile(profile){
+function ShowUserProfile(props){
+	debugger
+
+	let avatar = props.profile.photos ? <img src={props.profile.photos.small} alt='User_avatar'/> : <p>1111</p>
+
 	return(
 		<div>
 			<div className={classes.blockUserPhoto}>
-				<img src={profile.photos.small} alt='User_avatar'/>
+				{avatar}
+
 			</div>
 			<div>
-				<h2>{profile.fullName}</h2>
-				<p>{profile.aboutMe}</p>
+				<h2>{props.profile.fullName}</h2>
+				<p>{props.profile.aboutMe}</p>
 			</div>
 		</div>
 	)
 }
 
 const ProfileInfo = (props) => {
+	debugger
 	return (
 		<div>
 			<div className={classes.descriptionBlock}>
-				{!props.profile
+				{/*{!props.profile
 					? <Preloader />
 					: showUserProfile(props.profile)
-				}
+				}*/}
+				{props.profile ? <ShowUserProfile profile={props.profile}/> : <p>loading</p>}
 				
 				<ProfileStatus status={props.status} putProfileUserStatus={props.putProfileUserStatus}/>
 			</div>

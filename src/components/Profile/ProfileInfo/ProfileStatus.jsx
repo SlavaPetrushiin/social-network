@@ -20,7 +20,6 @@ class ProfileStatus extends React.Component {
     };
 
     componentWillReceiveProps(nextProp) {
-        debugger
         let status = this.props.status;
         if(status !== nextProp.status){
             this.setState({status: nextProp.status})

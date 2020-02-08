@@ -1,7 +1,6 @@
-import {profileUPI, usersUPI} from "../api/api";
+import {profileUPI} from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_POST = 'ProfilePage/ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET-USER-STATUS';
 
@@ -10,7 +9,6 @@ let initialState = {
         {id: 1, message: "Hi, how are you", likesCount: 10},
         {id: 2, message: "It's my first post", likesCount: 25},
     ],
-    newPostText: 'it-kamasutra.com',
     profile: null,
     status: ""
 }
@@ -19,21 +17,16 @@ const profilePageReducer = (state = initialState, action) => { //приниме�
     // eslint-disable-next-line default-case
     switch (action.type) {
         case ADD_POST:
+            debugger
             let newPost = {
                 id: state.posts.length + 1,
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 0
             }
             return {
-                posts: [...state.posts, newPost], newPostText: ''
-            }
-
-        case UPDATE_NEW_POST_TEXT: {
-            return {
                 ...state,
-                newPostText: action.newText
+                posts: [...state.posts, newPost]
             }
-        }
 
         case SET_USER_PROFILE :
             return {
@@ -48,9 +41,7 @@ const profilePageReducer = (state = initialState, action) => { //приниме�
     return state
 }
 
-export const postActionCreator = () => ({type: 'ADD-POST'});
-
-export const upDateNewPostTextActionCreator = (text) => ({type: 'UPDATE-NEW-POST-TEXT', newText: text});
+export const postActionCreator = (newPostText) => ({type: ADD_POST, newPostText});
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 

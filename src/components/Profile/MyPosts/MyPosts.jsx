@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
+import AddPostForm from "./AddPostForm";
 
 const MyPosts = (props) => {
 	
@@ -9,42 +9,22 @@ const MyPosts = (props) => {
 		return <Post message={post.message} likesCount={post.likesCount} key={i}/>
 	});
 
-	let onAddPost = () => {
-		props.onNewAddPost();
+	let onAddPost = (value) => {
+		let newPostText = value.newPostText;
+		props.onNewAddPost(newPostText);
 	};
 
-	let onPostChange = (e) => {
-		props.onNewPostChange(e.currentTarget.value);
-	};
 	return (
-		
 		<div className={classes.posts}>
 			MyPost
 			<div>
-				<div>
-					<textarea
-						value={props.newPostText}
-						onChange={onPostChange}>
-					</textarea>
-				</div>
-				<button onClick={ onAddPost }>Add post</button>
+				<AddPostForm onSubmit={onAddPost} /> //Добавление формы для поста
 			</div>
 			<div className={classes.posts}>
 				{postsElements}
 			</div>
 		</div>
 	)
-}
-
-MyPosts.defaultProps = {
-	newPostText : ''
-}
-
-MyPosts.propTypes = {
-	addPost : PropTypes.func,
-	updateNewPostText : PropTypes.func,
-	posts : PropTypes.array,
-	newPostText : PropTypes.string
 }
 
 export default MyPosts;
