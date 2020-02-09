@@ -33,7 +33,6 @@ export const profileUPI = {
 		return instance.get(`profile/status/${userId}`);
 	},
 	putProfileUserStatus(newStatus){
-		debugger
 		return instance.put(`profile/status/`, {status : newStatus});
 	},
 
@@ -42,8 +41,14 @@ export const profileUPI = {
 export const authIP = {
 	getAuthMe() { //авторизация
 		return instance.get(`auth/me`)
-			.then(response => response.data)
+			.then(response => response.data);
 	},
+	postAuthLogin(email, password, rememberMe = false){
+		return instance.post('auth/login', {email, password, rememberMe});
+	},
+	deleteAuthLogout(){
+		return instance.delete('auth/login');
+	}
 }
 
 

@@ -2,6 +2,7 @@ import {authIP, usersUPI} from "../api/api";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 
+//Изначальное незалогиненое состояние
 let initialState = {
 	id: null,
 	email: null,
@@ -14,19 +15,18 @@ const authReduser = (state = initialState, action) => {
 		case SET_USER_DATA:
 			return {
 				...state,
-				...action.data,
-				isAuth : true
+				...action.payload
 			}
 		default :
 			return state
 	}
 }
 
-export const setUserData = (id, email, login) => {
+export const setUserData = (id, email, login, isAuth) => {
 	return {
 		type: SET_USER_DATA,
-		data : {
-			id, email, login
+		payload : {
+			id, email, login, isAuth
 		}
 	}
 };
@@ -37,7 +37,30 @@ export const getAuthMe = () => (dispatch) => {
 		.then(response => {
 			if(response.resultCode === 0){
 				let {id, email, login} = response.data;
-				dispatch(setUserData(id, email, login))
+				dispatch(setUserData(id, email, login, true))
+			} else {
+				dispatch(setUserData(null, null, null, false))
+			}
+		})
+}
+
+//Логин
+export const postAuthLogin = (email, password, rememberMe) => (dispatch) => {
+	authIP.postAuthLogin(email, password, rememberMe)
+		.then(response => {
+			if(response.data.resultCode === 0){
+				dispatch(getAuthMe()) //При положительном ответе диспатчу санку из header
+			}
+		})
+}
+
+//Вылогинизация
+export const deleteAuthLogout = () => (dispatch) => {
+	debugger
+	authIP.deleteAuthLogout()
+		.then(response => {
+			if(response.data.resultCode === 0){
+				dispatch(getAuthMe()) //При положительном ответе диспатчу санку из header
 			}
 		})
 }

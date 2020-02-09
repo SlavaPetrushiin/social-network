@@ -14,7 +14,6 @@ let initialState = {
 }
 
 const profilePageReducer = (state = initialState, action) => { //принимет state и action
-    // eslint-disable-next-line default-case
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -35,9 +34,9 @@ const profilePageReducer = (state = initialState, action) => { //приниме�
             return {
                 ...state, status: action.status
             }
+        default :
+            return state
     }
-
-    return state
 }
 
 export const postActionCreator = (newPostText) => ({type: ADD_POST, newPostText});

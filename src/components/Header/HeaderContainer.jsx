@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import Header from './Header';
-import {getAuthMe} from "../../Redux/auth-reducer";
+import {deleteAuthLogout, getAuthMe} from "../../Redux/auth-reducer";
 
 class HeaderContainer extends React.Component{
 	componentDidMount(){
@@ -26,6 +26,9 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		getAuthMe : () => {
 			dispatch(getAuthMe())
+		},
+		deleteAuthLogout : () => {
+			dispatch(deleteAuthLogout())
 		}
 	}
 };
