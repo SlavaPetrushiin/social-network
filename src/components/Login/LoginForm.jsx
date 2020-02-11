@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form'
 import {Input} from "../common/FormsControls/FormControls";
 import {required} from "../../utils/ValidationForms/validation";
+import classes from "../common/FormsControls/FormControls.module.css";
 
 class LoginForm extends Component {
     render() {
-        const {handleSubmit} = this.props;
+        const {handleSubmit, error} = this.props;
         return (
             <form onSubmit={handleSubmit}>
                 <div>
@@ -28,11 +29,11 @@ class LoginForm extends Component {
                     <Field
                         type='checkbox'
                         component='input'
-                        validate={[required]}
                         name='rememberMe'
                     />
                     Remember Me
                 </div>
+                {error && <p className={classes.formSummaryError}>{this.props.error}</p>}
                 <div>
                     <button type="submit">Login</button>
                 </div>

@@ -1,4 +1,5 @@
 import {authIP, usersUPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 
@@ -50,6 +51,10 @@ export const postAuthLogin = (email, password, rememberMe) => (dispatch) => {
 		.then(response => {
 			if(response.data.resultCode === 0){
 				dispatch(getAuthMe()) //При положительном ответе диспатчу санку из header
+			} else {
+				let message = (response.data.messages.length > 0) ? response.data.messages[0] : "Incorrect values!"
+				let action = stopSubmit("login", {_error : message});
+				dispatch(action)
 			}
 		})
 }

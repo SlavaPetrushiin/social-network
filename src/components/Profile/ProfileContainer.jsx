@@ -10,7 +10,7 @@ import {compose} from "redux";
 class ProfileContainer extends React.Component{
 	componentDidMount(){
 		let userId = this.props.match.params.userId;
-		if (!userId) userId = 2;
+		if (!userId) userId = this.props.authorizedUserId;
 		this.props.getProfileUser(userId); //функция по запросу профиля thunk
 		this.props.getUserStatus(userId);
 	}
@@ -28,12 +28,14 @@ let mapStateToProps = (state) =>  {
 	return {
 		profile : state.profilePage.profile,
 		status : state.profilePage.status,
+		authorizedUserId  : state.auth.id, //получение id
+		isAuth : state.auth.isAuth,
 	}
 };
 
 export default compose(
 	connect(mapStateToProps, {getProfileUser, getUserStatus, putProfileUserStatus}),
 	withRouter,
-	// withAuthRedirect
+	withAuthRedirect
 )(ProfileContainer);
 
