@@ -9,10 +9,22 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component{
 	componentDidMount(){
+		debugger
 		let userId = this.props.match.params.userId;
-		if (!userId) userId = this.props.authorizedUserId;
+		if (!userId) {
+			userId = this.props.authorizedUserId
+			if(!userId) {
+				userId = this.props.history.push('/login')
+			}
+		};
 		this.props.getProfileUser(userId); //функция по запросу профиля thunk
 		this.props.getUserStatus(userId);
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevProps.match.params.userId !== this.props.match.params.userId){
+			this.props.history.push('/login');
+		}
 	}
 
 	render(){
@@ -35,7 +47,6 @@ let mapStateToProps = (state) =>  {
 
 export default compose(
 	connect(mapStateToProps, {getProfileUser, getUserStatus, putProfileUserStatus}),
-	withRouter,
-	withAuthRedirect
+	withRouter
 )(ProfileContainer);
 

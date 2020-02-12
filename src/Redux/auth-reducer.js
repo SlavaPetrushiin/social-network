@@ -34,7 +34,7 @@ export const setUserData = (id, email, login, isAuth) => {
 
 //thunk
 export const getAuthMe = () => (dispatch) => {
-	authIP.getAuthMe()
+	return authIP.getAuthMe()
 		.then(response => {
 			if(response.resultCode === 0){
 				let {id, email, login} = response.data;
