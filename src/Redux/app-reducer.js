@@ -25,7 +25,6 @@ export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 //thunk
 export const initializeApp = () => (dispatch) => {
 	let propise = dispatch(getAuthMe()); //Возвращается промис
-	debugger
 	Promise.all([propise])
 		.then(() => {
 			dispatch(initializedSuccess())

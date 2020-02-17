@@ -5,6 +5,7 @@ import Preloader from '../common/Preloader/Preloader';
 import {follow, getNewPageUsersThank, getUsersThunkCreator, unfollow} from "../../Redux/users-reducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {getPage, getPageSize, getPreloader, getTotalCount, getUsers} from "../../Redux/users-selectors";
 
 class UsersAPI extends React.Component{
 	componentDidMount(){
@@ -33,14 +34,14 @@ class UsersAPI extends React.Component{
 	}
 }
 
-
+//Используем селекторы
 let mapStateToProps = (state) => {
 	return {
-		users : state.usersPage.users,
-		totalCount : state.usersPage.totalCount,
-		sizePage : state.usersPage.sizePage,
-		page : state.usersPage.page,
-		isPreloader : state.usersPage.isPreloader
+		users : getUsers(state),
+		totalCount : getTotalCount(state),
+		sizePage :  getPageSize(state),
+		page : getPage(state),
+		isPreloader : getPreloader(state)
 	}
 }
 
