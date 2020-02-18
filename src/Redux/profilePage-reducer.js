@@ -61,7 +61,6 @@ export const getUserStatus = (userId) => (dispatch) => {
 
 export const putProfileUserStatus = (newStatus) => (dispatch) => {
     profileUPI.putProfileUserStatus(newStatus).then(response => {
-	    debugger
         dispatch(setUserStatus(newStatus));
 	});
 }

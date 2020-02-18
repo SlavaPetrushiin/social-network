@@ -8,6 +8,8 @@ export const getUsersSuper = createSelector(getUsers, (users) => {
 	return users.filter(user => true);
 });
 
+console.log(getUsersSuper)
+
 export const getTotalCount = (state) => {
 	return state.usersPage.totalCount;
 };
