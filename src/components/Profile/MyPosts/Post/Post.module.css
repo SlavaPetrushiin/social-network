@@ -1,9 +1,18 @@
 .item {
 	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
 }
 
-.item img{
+.photoUser{
 	width: 100px;
 	height: 100px;
-	border-radius: 50%;
+	border-radius: 100%;
+	background-image: url('https://avatars.mds.yandex.net/get-pdb/936467/88941d10-1568-42bf-8af4-f88019a74f48/s1200');
+	background-size: cover;
+	background-position: center;
+}
+
+.messagesUser{
+	margin-left: 20px;
 }

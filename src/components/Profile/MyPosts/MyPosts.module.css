@@ -1,3 +1,33 @@
-.posts{
-	padding: 15px;;
+.addPost{
+	margin-bottom: 20px;
 }
+
+.fieldForNewPost{
+	min-height: 100px;
+	width: 200px;
+	resize: none;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.btnAddPost{
+	border: none;
+	padding: 8px 30px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 16px;
+	background-color: #555555;
+	color: white;
+	border-radius: 8px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+}
+
+.btnAddPost:hover {
+	background-color: grey;
+	color: black;
+}
+
+

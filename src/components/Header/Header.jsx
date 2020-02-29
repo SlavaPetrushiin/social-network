@@ -9,13 +9,10 @@ const Header = (props) => {
 			<div className={classes.headerLogo}>
 				<img src="http://mythemestore.com/friend-finder/images/logo.png" alt="logo"/>
 			</div>
-			<div className={classes.formGroup}>
-				<input type="text" placeholder="Search friends, photos, videos" className={classes.search} />
-			</div>
 			<div className={classes.loginBlock}>
 				{
 					(isAuth)
-						? <span>{login}<button onClick={props.deleteAuthLogout}> Logout </button></span>
+						? <span>{login}<button className={classes.loginBtn} onClick={props.deleteAuthLogout}> Logout </button></span>
 						: <NavLink to="/login">Login</NavLink>
 				}
 			</div>

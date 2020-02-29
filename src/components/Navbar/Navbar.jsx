@@ -14,7 +14,7 @@ const Navbar = (props) => {
 			<NavLink to="/news" activeClassName={classes.activeLink} className={`${classes.link}`}>News</NavLink>
 			<NavLink to="/musics" activeClassName={classes.activeLink} className={`${classes.link}`}>Musics</NavLink>
 			<NavLink to="/settings" activeClassName={classes.activeLink} className={`${classes.link}`}>Settings</NavLink>
-			<SidebarContainer />
+			{/*<SidebarContainer />*/}
 		</nav>
 	)
 };

@@ -17,9 +17,7 @@ const MyPosts = (props) => {
 	return (
 		<div className={classes.posts}>
 			MyPost
-			<div>
-				<AddPostForm onSubmit={onAddPost} /> //Добавление формы для поста
-			</div>
+			<AddPostForm onSubmit={onAddPost} />
 			<div className={classes.posts}>
 				{postsElements}
 			</div>

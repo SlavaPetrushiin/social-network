@@ -1,5 +1,5 @@
 .nav{
-	grid-area: n;
+	flex: 1;
 	background: linear-gradient(to right, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
 	min-height: 100vh;
 }
@@ -13,7 +13,6 @@
 	color: #fff;
 	font-size: 22px;
 	display: block;
-	width: 200px;
 	text-align: left;
 	margin: 10px 0;
 	padding: 0 10px;
@@ -27,4 +26,33 @@
 .link .activeLink{
 	color: #000;
 	background: rgb(235, 235, 238);	
+}
+
+@media (max-width: 840px) {
+	.nav{
+		min-height: 50px;
+		padding: 0 15px;
+		display: flex;
+		justify-content: space-between;
+		background: linear-gradient(to right, rgb(222, 218, 218) 0%,rgb(186, 182, 182) 100%);
+	}
+	.link{
+		margin: 0;
+		padding: 0 10px;
+		flex: 1;
+		align-self: stretch;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: black;
+	}
+}
+
+@media (max-width: 540px) {
+	.nav{
+		flex-flow: row wrap;
+	}
+	.link{
+		padding: 10px;
+	}
 }
